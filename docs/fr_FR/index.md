@@ -8,7 +8,7 @@ Ce plugin permet d'accéder aux fonctions des tablettes utilisant l'application 
 
 Renseigner l'adresse IP et le mot de passe
 - Vous pouvez cocher ou décocher l'affichage sur le widget de certaines fonctionnalités en fonction de votre besoin
-- vous pouvez ajouer vos propres actions par exemple en ajoutant une commande action "Lancer URL jeedom.com" avec la valeur correspondante loadURL&url=www.jeedom.com
+- Vous pouvez ajouter vos propres actions par exemple en ajoutant une commande action "Lancer URL jeedom.com" avec la valeur correspondante loadURL&url=www.jeedom.com
 
 ### Fonctions disponibles
 
@@ -239,24 +239,24 @@ Liste des paramètres:
 
 Plus de détails sur le site de fully kiosk: https://www.ozerov.de/fully-kiosk-browser/
 
-Pour les fonctions screenshot et camshot les fichiers résultats ne sont pas stockés, mais si vous avez un besoin de ce côté là vous pouvez toujours vous servir du plugin camera et mettre l'url de snapshot:
+Pour les fonctions screenshot et camshot les fichiers résultats ne sont pas stockés, mais si vous avez un besoin de ce côté-là vous pouvez toujours vous servir du plugin camera et mettre l'url de snapshot:
 http://[iptablette]:2323/?cmd=getCamshot&password=[pass] 
 
 - getCamshot a été ajouté: par défaut l'image est stocké dans le dossier resources du plugin avec le nom camshot.jpg. Vous pouvez préciser un autre chemin et un autre nom de fichier si besoin. Bien entendu le chemin doit être accessible en écriture.
 
 ## MQTT
-- si vous ne voulez pas utiliser cette fonctionnalité ou si vous ne savez pas à quoi ça correspond il est conseillé de désactiver le démarrage automatique du deamon.
-- l'activation de MQTT dans other settings - MQTT integration permet de remonter des évènements de la tablette en temps réel pour déclencher des actions par scénario.
-- les évènements disponibles sont les suivants:
+- Si vous ne voulez pas utiliser cette fonctionnalité ou si vous ne savez pas à quoi ça correspond il est conseillé de désactiver le démarrage automatique du deamon.
+- L'activation de MQTT dans other settings - MQTT integration permet de remonter des évènements de la tablette en temps réel pour déclencher des actions par scénario.
+- Les évènements disponibles sont les suivants:
 screenOn, screenOff, pluggedAC, pluggedUSB, pluggedWireless, unplugged, networkReconnect, networkDisconnect, internetReconnect, internetDisconnect, powerOn, powerOff, showKeyboard, hideKeyboard, onMotion, onDarkness, onMovement, volumeUp, volumeDown, onQrScanCancelled, onBatteryLevelChanged, onScreensaverStart, onScreensaverStop.
 - Les évènement screenOn, screenOff, batteryLevelChanged et pluggedxxx mettent également à jour les infos "non mqtt" correspondantes. Par exemple cela signifie que le niveau de batterie est mis à jour sans avoir à réactualiser les données.
-- une fois activé sur la tablette et sur la configuration du plugin, la valeur de l'évènement (screenOn par exemple) prend l'heure du dernier évènement reçu. Cela permet de les utiliser en tant que déclencheur dans un scénario par exemple.
+- Une fois activé sur la tablette et sur la configuration du plugin, la valeur de l'évènement (screenOn par exemple) prend l'heure du dernier évènement reçu. Cela permet de les utiliser en tant que déclencheur dans un scénario par exemple.
 - Le démon peut être arrêté pour éviter de gérer un broker MQTT actif sur jeedom.
 - Sur la tablette vous devez renseigner l'adresse IP de jeedom et le port 1883. tcp://ip_jeedom:1883
 - Eventuellement vous pouvez ajouter un nom d'utilisateur et un mot de passe mais ce n'est pas obligatoire.
 - Le sujet souscrit est /fully/event/deviceid où device ID est un identifiant unique pour la tablette vous ne pouvez donc pas multiplier les équipements tablette fullykiosk avec la même adresse IP.
 
-- si vous ne voulez pas utiliser cette fonctionnalité, il suffit de décocher MQTT sur la page de configuration du plugin
+- Si vous ne voulez pas utiliser cette fonctionnalité, il suffit de décocher MQTT sur la page de configuration du plugin
 __Attention__
 >> - le démarrage automatique du démon est désactivé par défaut donc si vous activez MQTT pour la première fois il faudra éventuellement remettre le démarrage automatique. (une mise à jour du plugin pourrait arrêter le démon)
 >> - __Une première intialisation des données est nécessaire pour la mise à jour des infos MQTT.__ (Bouton ou commande refresh)
@@ -264,7 +264,7 @@ __Attention__
 ## Autres fonctionnalités
 - Fully Kiosk permet d'injecter des fonctions JS comme par exemple lancer une application avec des paramètres.
 Dans les settings vous devez activer la fonction : Advanced Web Settings >> Enable JavaScript Interface
-Dans ce cas là vous pouvez lancer du javascript avec quelques fonctions propres à fullykiosk. 
+Dans ce cas-là vous pouvez lancer du javascript avec quelques fonctions propres à fullykiosk. 
 
 -Exemple qui permet de lancer VLC avec un flux d'une caméra:
 fully.startApplication('org.videolan.vlc',"android.intent.action.VIEW", 'rtsp://userid:password@192.168.0.xx:88/videoSub')
